@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mini/zaytox // DIGITAL LAB</title>
+<style>
+:root {
+  --bg: #07090d;
+  --panel: #0d1118;
+  --border: #202a36;
+  --green: #8cffb0;
+  --text: #dce6ef;
+  --muted: #738394;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 22px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Consolas, Monaco, monospace;
+}
+main {
+  max-width: 900px;
+  margin: auto;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.logo {
+  color: var(--green);
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.subtitle, .online, .section-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.online { color: var(--green); }
+h2 {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 28px 0 12px;
+  letter-spacing: 2px;
+}
+.modules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.module {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 16px;
+  cursor: pointer;
+  transition: .2s;
+  min-height: 95px;
+}
+.module:hover, .module.active {
+  border-color: var(--green);
+  background: #101a18;
+}
+.module-title {
+  color: var(--green);
+  font-size: 12px;
+  margin-bottom: 9px;
+}
+.module-desc {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.console {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  background: #090c11;
+}
+.console-head {
+  padding: 13px;
+  border-bottom: 1px solid var(--border);
+  color: var(--green);
+  font-size: 12px;
+}
+.console-body { padding: 16px; }
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 9px;
+}
+input {
+  width: 100%;
+  background: #05070a;
+  color: var(--green);
+  border: 1px solid #293747;
+  padding: 14px;
+  font-family: inherit;
+  outline: none;
+}
+input:focus { border-color: var(--green); }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 12px;
+}
+button {
+  background: transparent;
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 11px 15px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+}
+button:hover {
+  background: var(--green);
+  color: #07100a;
+}
+#output {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 100px;
+}
+.green { color: var(--green); }
+.muted { color: var(--muted); }
+footer {
+  text-align: center;
+  color: #536170;
+  font-size: 10px;
+  margin-top: 22px;
+  letter-spacing: 1px;
+}
+@media (max-width: 520px) {
+  body { padding: 14px; }
+  .modules { grid-template-columns: 1fr; }
+  .logo { font-size: 21px; }
+}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div>
+    <div class="logo">mini/zaytox</div>
+    <div class="subtitle">TOOLS // DIGITAL LAB</div>
+  </div>
+  <div class="online">● SYSTEM ONLINE</div>
+</header>
+<h2>// SELECT MODULE</h2>
+<section class="modules">
+  <div class="module active" data-module="snap">
+    <div class="module-title">MODULE_01 ◈ SNAP PROFILE</div>
+    <div class="module-desc">Recherche pseudo Snapchat et fiche de démonstration.</div>
+  </div>
+  <div class="module" data-module="network">
+    <div class="module-title">MODULE_02 ⌁ NETWORK PULSE</div>
+    <div class="module-desc">Vérification du format d'un domaine.</div>
+  </div>
+  <div class="module" data-module="cipher">
+    <div class="module-title">MODULE_03 ⬡ CIPHER FORGE</div>
+    <div class="module-desc">Génération d'une empreinte SHA-256.</div>
+  </div>
+  <div class="module" data-module="signal">
+    <div class="module-title">MODULE_04 ⌘ SIGNAL DECK</div>
+    <div class="module-desc">Journal des événements locaux.</div>
+  </div>
+  <div class="module" data-module="watch">
+    <div class="module-title">MODULE_05 ◉ WATCHTOWER</div>
+    <div class="module-desc">Checklist de sécurité.</div>
+  </div>
+  <div class="module" data-module="atlas">
+    <div class="module-title">MODULE_06 ✧ DIGITAL ATLAS</div>
+    <div class="module-desc">Organisation d'une information.</div>
+  </div>
+  <div class="module" data-module="random">
+    <div class="module-title">MODULE_07 ⟁ RANDOM FORGE</div>
+    <div class="module-desc">Création d'une référence aléatoire.</div>
+  </div>
+</section>
+<section class="console">
+  <div class="console-head">mini/zaytox://CONSOLE <span class="green">● READY</span></div>
+  <div class="console-body">
+    <label id="searchLabel" for="query">RECHERCHE PSEUDO SNAPCHAT</label>
+    <input id="query" type="text" placeholder="Exemple : @bello.31k" autocomplete="off">
+    <div class="actions">
+      <button id="run">▶ EXÉCUTER</button>
+      <button id="clear">EFFACER</button>
+    </div>
+    <div id="output"><span class="green">mini/zaytox TOOLS v1.0</span>
+Bienvenue dans la console.
+Sélectionne un module et saisis une valeur.
+<span class="muted">[READY] En attente d'une commande...</span></div>
+  </div>
+</section>
+<footer>mini/zaytox © DIGITAL LAB</footer>
+</main>
+<script>
+const input = document.getElementById("query");
+const output = document.getElementById("output");
+const label = document.getElementById("searchLabel");
+const modules = document.querySelectorAll(".module");
+let selected = "snap";
+function log(text) {
+  output.textContent = text;
+}
+modules.forEach(card => {
+  card.addEventListener("click", () => {
+    modules.forEach(item => item.classList.remove("active"));
+    card.classList.add("active");
+    selected = card.dataset.module;
+    const prompts = {
+      snap: ["RECHERCHE PSEUDO SNAPCHAT", "Exemple : @bello.31k"],
+      network: ["ENTRÉE / DOMAINE", "Exemple : exemple.com"],
+      cipher: ["ENTRÉE / TEXTE À HACHER", "Saisir un texte..."],
+      signal: ["ENTRÉE / ÉVÉNEMENT", "Saisir un événement..."],
+      watch: ["ENTRÉE / NOM DU PROJET", "Saisir un projet..."],
+      atlas: ["ENTRÉE / NOTE", "Saisir une note..."],
+      random: ["ENTRÉE / NOM DU PROJET", "Saisir un projet..."]
+    };
+    label.textContent = prompts[selected][0];
+    input.placeholder = prompts[selected][1];
+    log("mini/zaytox://CONSOLE\nModule sélectionné : " +
+        card.querySelector(".module-title").textContent +
+        "\n<span class='muted'>[READY] En attente d'une commande...</span>");
+  });
+});
+function escapeHTML(value) {
+  return value.replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  }[char]));
+}
+async function execute() {
+  const value = input.value.trim();
+  if (!value) {
+    log("[ERREUR] Saisis une valeur avant d'exécuter.");
+    return;
+  }
+  if (selected === "snap") {
+    const pseudo = value.replace(/^@/, "");
+    if (!/^[a-zA-Z0-9._-]{1,30}$/.test(pseudo)) {
+      log("[ERREUR] Format de pseudo invalide.");
+      return;
+    }
+    const fakeId = "DEMO-" + Array.from(
+      crypto.getRandomValues(new Uint8Array(6)),
+      b => b.toString(16).padStart(2, "0")
+    ).join("").toUpperCase();
+    const fakeHash = Array.from(
+      crypto.getRandomValues(new Uint8Array(16)),
+      b => b.toString(16).padStart(2, "0")
+    ).join("");
+    log(
+`mini/zaytox://CONSOLE
+Recherche : @${pseudo}
+╔══════════════════════════════
+║ SNAP PROFILE
+╚══════════════════════════════
+Pseudo       : @${pseudo}
+ID           : ${fakeId}
+HASH         : ${fakeHash}
+Statut       : PROFIL DE DÉMONSTRATION
+Plateforme   : Snapchat
+Données      : FICTIVES
+[INFO] Aucune donnée privée n'a été récupérée.
+[READY] Recherche locale terminée.`
+    );
+    return;
+  }
+  if (selected === "network") {
+    const valid = /^(?=.{1,253}$)([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)(\.([a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?))+$/.test(value);
+    log(`NETWORK PULSE\nEntrée : ${escapeHTML(value)}\nFormat : ${valid ? "VALIDE" : "À VÉRIFIER"}\nAucune connexion réseau effectuée.`);
+    return;
+  }
+  if (selected === "cipher") {
+    const bytes = new TextEncoder().encode(value);
+    const hash = await crypto.subtle.digest("SHA-256", bytes);
+    const hex = Array.from(new Uint8Array(hash),
+      b => b.toString(16).padStart(2, "0")).join("");
+    log(`CIPHER FORGE\nEntrée : ${escapeHTML(value)}\nSHA-256 : ${hex}`);
+    return;
+  }
+  if (selected === "signal") {
+    log(`SIGNAL DECK\nÉvénement enregistré localement :\n${escapeHTML(value)}\nStatut : OK`);
+    return;
+  }
+  if (selected === "watch") {
+    log(`WATCHTOWER\nProjet : ${escapeHTML(value)}\n\n[ ] Mot de passe robuste\n[ ] Double authentification\n[ ] Mises à jour activées\n[ ] Sauvegarde vérifiée`);
+    return;
+  }
+  if (selected === "atlas") {
+    log(`DIGITAL ATLAS\nNote : ${escapeHTML(value)}\nStatut : affichée localement.`);
+    return;
+  }
+  if (selected === "random") {
+    const bytes = crypto.getRandomValues(new Uint8Array(12));
+    const ref = Array.from(bytes,
+      b => b.toString(16).padStart(2, "0")).join("").toUpperCase();
+    log(`RANDOM FORGE\nProjet : ${escapeHTML(value)}\nRéférence : ${ref}`);
+  }
+}
+document.getElementById("run").addEventListener("click", () => {
+  execute().catch(() => log("[ERREUR] Opération impossible dans ce navigateur."));
+});
+input.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    execute().catch(() => log("[ERREUR] Opération impossible."));
+  }
+});
+document.getElementById("clear").addEventListener("click", () => {
+  input.value = "";
+  log("mini/zaytox://CONSOLE\n[READY] En attente d'une commande...");
+  input.focus();
+});
+</script>
+</body>
+</html>
